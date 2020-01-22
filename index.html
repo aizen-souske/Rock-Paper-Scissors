@@ -20,11 +20,12 @@
                 switch(true) {
                     default:
                         console.log(win);
+                        scoreFor++;
                         break;
                     case (playerSel.toLowerCase() == "rock") && (computerSel == "paper"):
                     case (playerSel.toLowerCase() == "paper") && (computerSel == "scissors"):
                         console.log(loss);
-                        scoreAgainst++;
+                        scoreFor++;
                         break;
                     case (playerSel.toLowerCase() == computerSel):
                         console.log("Its a tie! Try again");
@@ -50,6 +51,8 @@
                 else{
                     alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You Win!");
                 }
+                scoreAgainst = 0;
+                scoreFor = 0;
             }
             document.getElementById("game").innerHTML = game();
         </script>

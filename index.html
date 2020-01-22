@@ -7,28 +7,36 @@
     <body>
         <p id="game"></p>
         <script>
+            // function to return a random word from the list
             function computerPlay(){
                 let ranList = ["rock", "paper", "scissors"];
                 let ranSel= ranList[Math.floor(Math.random()*ranList.length)]
                 return ranSel;
             }
 
+            // function to use players input as selection and compare with returned random word from computer function
             function playAround(playerSel, computerSel){
                 let loss = "You lose! " + computerSel + " beats " + playerSel;
                 let win = "You win! " + playerSel + " beats " + computerSel;
-
+                
+                // winning and losing conditions
+                // for each condition increment score accordingly
                 switch(true) {
                     default:
+                        console.log(playerSel + " is invalid! Please select only from rock, paper or scissors");
+                        break;
+                    case (playerSel === computerSel):
+                        console.log(playerSel + " " + computerSel + ". Its a tie! Try again");
+                        break;
+                    case (playerSel.toLowerCase() === "rock") && (computerSel === "paper"):
+                    case (playerSel.toLowerCase() === "paper") && (computerSel === "scissors"):
+                        console.log(loss);
+                        scoreAgainst++;
+                        break;
+                    case (playerSel.toLowerCase() === "paper") && (computerSel === "rock"):
+                    case (playerSel.toLowerCase() === "scissors") && (computerSel === "paper"):
                         console.log(win);
                         scoreFor++;
-                        break;
-                    case (playerSel.toLowerCase() == "rock") && (computerSel == "paper"):
-                    case (playerSel.toLowerCase() == "paper") && (computerSel == "scissors"):
-                        console.log(loss);
-                        scoreFor++;
-                        break;
-                    case (playerSel.toLowerCase() == computerSel):
-                        console.log("Its a tie! Try again");
                         break;
                 }
             }
@@ -43,13 +51,17 @@
                     playAround(playerSel, computerSel);
 
                 }
-
-                if(scoreFor>scoreAgainst){
-                    alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You lose!");
-                }
-
-                else{
-                    alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You Win!");
+                
+                switch(true){
+                    default:
+                        alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You Tie!");
+                        break;
+                    case scoreFor>scoreAgainst:
+                        alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You Win!");
+                        break;
+                    case scoreFor<scoreAgainst:
+                        alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "It's a lose!");
+                        break;
                 }
                 scoreAgainst = 0;
                 scoreFor = 0;

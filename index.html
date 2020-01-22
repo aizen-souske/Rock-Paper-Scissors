@@ -19,7 +19,7 @@
                 let loss = "You lose! " + computerSel + " beats " + playerSel;
                 let win = "You win! " + playerSel + " beats " + computerSel;
                 
-                // winning and losing conditions
+                // winning and losing conditions and output message for each round
                 // for each condition increment score accordingly
                 switch(true) {
                     default:
@@ -44,6 +44,8 @@
             computerSel = computerPlay();
             let scoreAgainst = 0;
             let scoreFor = 0;
+
+            // function to play 5 rounds
             function game(){
                 let playerSel = "";
                 for(i=0; i<5; i++){
@@ -51,7 +53,7 @@
                     playAround(playerSel, computerSel);
 
                 }
-                
+                // output message to alert player on the outcome of the whole match
                 switch(true){
                     default:
                         alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You Tie!");

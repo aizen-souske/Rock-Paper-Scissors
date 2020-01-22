@@ -2,10 +2,10 @@
 <html lang = "en">
     <head>
         <title>Rock! Paper! Scissors!</title>
-        <meta charset = "uft-8">
+        <meta charset = "utf-8">
     </head>
     <body>
-        <p>id="game"</p>
+        <p id="game"></p>
         <script>
             function computerPlay(){
                 let ranList = ["rock", "paper", "scissors"];
@@ -14,49 +14,44 @@
             }
 
             function playAround(playerSel, computerSel){
-                if((playerSel.toLowerCase() == "rock" && computerSel == "paper") || (playerSel.toLowerCase() == "paper" && computerSel == "scissors")
-                || (playerSel.toLowerCase() == "scissors" && computerSel == "rock")){
-                    let loss = "You lose! " + computerSel + " beats " + playerSel;
-                    return loss;
+                let loss = "You lose! " + computerSel + " beats " + playerSel;
+                let win = "You win! " + playerSel + " beats " + computerSel;
+
+                switch(true) {
+                    default:
+                        console.log(win);
+                        break;
+                    case (playerSel.toLowerCase() == "rock") && (computerSel == "paper"):
+                    case (playerSel.toLowerCase() == "paper") && (computerSel == "scissors"):
+                        console.log(loss);
+                        scoreAgainst++;
+                        break;
+                    case (playerSel.toLowerCase() == computerSel):
+                        console.log("Its a tie! Try again");
+                        break;
+                }
+            }
+           
+            computerSel = computerPlay();
+            let scoreAgainst = 0;
+            let scoreFor = 0;
+            function game(){
+                let playerSel = "";
+                for(i=0; i<5; i++){
+                    playerSel = prompt("Select your weapon: ");
+                    playAround(playerSel, computerSel);
+
                 }
 
-                else if((playerSel.toLowerCase() == "paper" && computerSel == "rock") || (playerSel.toLowerCase() == "scissors" && computerSel == "rock")
-                || (playerSel.toLowerCase() == "rock" && computerSel == "scissors")){
-                    let win = "You win! " + playerSel + " beats " + computerSel;
-                    return win;
+                if(scoreFor>scoreAgainst){
+                    alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You lose!");
                 }
 
                 else{
-                    let tie = "It's a tie! Try again"
-                    return tie;
+                    alert("Final score is " + scoreFor + ":" + scoreAgainst + "." + "You Win!");
                 }
-
-                computerSel = computerPlay();
-                let scoreAgainst = 0;
-                let scoreFor = 0;
-
-                function game(){
-                    for(i = 0; i<5; i++){
-                        playerSel = prompt("Select your weapon: ");
-                        playAround(playerSel, computerSel);
-
-                        if(loss){
-                            scoreAgainst++;
-                        }
-
-                        else if(win){
-                            scoreFor++;
-                        }
-
-                        else{
-                            alert(tie);
-                        }
-                    }
-                }
-
-                document.getElementById("game").innerHTML = game();
-
             }
+            document.getElementById("game").innerHTML = game();
         </script>
     </body>
 </html>

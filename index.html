@@ -21,19 +21,19 @@
                 
                 // winning and losing conditions and output message for each round
                 // for each condition increment score accordingly
-                if((playerSel.toLowerCase() === "rock") && (computerSel === "paper") || (playerSel.toLowerCase() === "paper") && (computerSel === "scissors")){
+                if((playerSel.toLowerCase() == "rock") && (computerSel == "paper") || (playerSel.toLowerCase() == "paper") && (computerSel == "scissors")){
                     console.log(loss);
                     scoreAgainst++;
 
                 }
 
-                else if((playerSel.toLowerCase() === "paper") && (computerSel === "rock") || (playerSel.toLowerCase() === "scissors") && (computerSel === "paper")){
+                else if((playerSel.toLowerCase() == "paper") && (computerSel == "rock") || (playerSel.toLowerCase() == "scissors") && (computerSel == "paper")){
                     console.log(win);
                     scoreFor++;
 
                 }
 
-                else if((playerSel === computerSel)){
+                else if((playerSel == computerSel)){
                     console.log(playerSel + " " + computerSel + ". Its a tie! Try again")
                 }
 
@@ -76,6 +76,7 @@
                     playerSel = prompt("Select your weapon: ");
                     
                     playAround(playerSel, computerSel);
+                    computerSel = computerPlay();
 
                 }
                 // output message to alert player on the outcome of the whole match

@@ -21,7 +21,27 @@
                 
                 // winning and losing conditions and output message for each round
                 // for each condition increment score accordingly
-                switch(true) {
+                if((playerSel.toLowerCase() === "rock") && (computerSel === "paper") || (playerSel.toLowerCase() === "paper") && (computerSel === "scissors")){
+                    console.log(loss);
+                    scoreAgainst++;
+
+                }
+
+                else if((playerSel.toLowerCase() === "paper") && (computerSel === "rock") || (playerSel.toLowerCase() === "scissors") && (computerSel === "paper")){
+                    console.log(win);
+                    scoreFor++;
+
+                }
+
+                else if((playerSel === computerSel)){
+                    console.log(playerSel + " " + computerSel + ". Its a tie! Try again")
+                }
+
+                else{
+                   console.log(playerSel + " is invalid! Please select only from rock, paper or scissors")
+
+                }
+                /*switch(true) {
                     default:
                         console.log(playerSel + " is invalid! Please select only from rock, paper or scissors");
                         break;
@@ -38,18 +58,23 @@
                         console.log(win);
                         scoreFor++;
                         break;
-                }
+                    case (playerSel.toLowerCase() !== "rock"):
+                    case (playerSel.toLowerCase() !== "paper"):
+                    case (playerSel.toLowerCase() !== "scissor"):
+                        console.log(playerSel + " is invalid! Please select only from rock, paper or scissors");
+                        break;
+                }*/
             }
-           
-            computerSel = computerPlay();
             let scoreAgainst = 0;
             let scoreFor = 0;
 
             // function to play 5 rounds
             function game(){
-                let playerSel = "";
+                let playerSel = " ";
+                computerSel = computerPlay();
                 for(i=0; i<5; i++){
                     playerSel = prompt("Select your weapon: ");
+                    
                     playAround(playerSel, computerSel);
 
                 }
